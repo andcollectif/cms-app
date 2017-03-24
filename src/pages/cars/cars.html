@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cars</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card class="cards-bg" ion-item *ngFor="let car of cars">
+      <img [src]="car.guid" (click)="launch(car.post_name)" />
+
+      <ion-card-content>
+        <ion-card-title>
+          {{ car.post_title }}
+        </ion-card-title>
+        <p>
+          <strong>Leasing à partir de :</strong>
+          {{ car.meta_value }} €
+        </p>
+      </ion-card-content>
+
+      <ion-row no-padding>
+        <ion-col text-left>
+          <button ion-button clear small color="danger" icon-left (click)="launch(car.post_name)">
+            <ion-icon name="arrow-forward" item-right></ion-icon>
+            Voir la fiche véhicule
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

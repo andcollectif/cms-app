@@ -2,9 +2,11 @@
 <widget id="com.ionicframework.cmsapp456227" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>cms-app</name>
   <description>An awesome Ionic/Cordova app.</description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+  <author email="sebastien.kalinine@gmail.com">Sébastien Kalinine</author>
   <content src="index.html"/>
-  <access origin="*"/>
+  <access origin="https://cmsauto.com"/>
+  <access origin="http://api.cmsauto.com"/>
+  <allow-navigation href="https://cmsauto.com/*"/>
   <allow-navigation href="http://ionic.local/*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
@@ -19,14 +21,14 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="webviewbounce" value="true"/>
+  <preference name="UIWebViewBounce" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashMaintainAspectRatio" value="true"/>
-  <preference name="FadeSplashScreenDuration" value="300"/>
-  <preference name="SplashShowOnlyFirstTime" value="false"/>
+  <preference name="FadeSplashScreenDuration" value="200"/>
+  <preference name="SplashShowOnlyFirstTime" value="true"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
