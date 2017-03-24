@@ -6,8 +6,8 @@
 
 </ion-header>
 
-<ion-content>
-  <ion-list>
+<ion-content class="card-background-page">
+   <ion-list>
     <ion-card class="cards-bg" ion-item *ngFor="let car of cars">
       <img [src]="car.guid" (click)="launch(car.post_name)" />
 
@@ -31,6 +31,7 @@
       </ion-row>
     </ion-card>
   </ion-list>
+
   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>

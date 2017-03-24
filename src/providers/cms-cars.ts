@@ -16,7 +16,7 @@ export class CmsCars {
   constructor(public http: Http) {}
 
   load(offset): Observable<Car[]> {
-    return this.http.get(`http://api.cmsauto.com/cars?offset=` + offset)
+    return this.http.get(`../assets/users.json`)
       .map(res => <Car[]>res.json());
   }
 }
