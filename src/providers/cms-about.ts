@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { Car } from '../models/car';
+import { About } from '../models/about';
 
 /*
   Generated class for the CmsCars provider.
@@ -11,17 +11,17 @@ import { Car } from '../models/car';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class CmsCars {
+export class CmsAbout {
 
   constructor(public http: Http) {}
 
-  load(offset): Observable<Car[]> {
-    return this.http.get(`http://api.cmsauto.com/cars?offset=` + offset)
-      .map(res => <Car[]>res.json());
-  }
+  // load(offset): Observable<About[]> {
+  //   return this.http.get(`http://api.cmsauto.com/news?offset=` + offset)
+  //     .map(res => <About[]>res.json());
+  // }
 
-  // load(offset): Observable<Car[]> {
-  //     return this.http.get(`assets/users.json`)
-  //       .map(res => <Car[]>res.json());
-  //   }
+  load(offset): Observable<About[]> {
+    return this.http.get(`assets/news.json`)
+        .map(res => <About[]>res.json());
+  }
 }

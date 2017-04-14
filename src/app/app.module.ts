@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CmsCars } from '../providers/cms-cars';
+import { CmsAbout } from '../providers/cms-about';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     StatusBar,
     SplashScreen,
     CmsCars,
+    CmsAbout,
     InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -1,11 +1,24 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
+    <ion-title>About</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-<p>test</p>
+    <ion-list>
+        <ion-card *ngFor="let new of news">
+          <ion-item>
+            <h2 (click)="launch(new.post_name)">{{ new.post_title }}</h2>
+            <p>{{ new.post_date }}</p>
+          </ion-item>
+
+          <img [src]="new.guid" (click)="launch(new.post_name)" />
+
+          <ion-card-content>
+            <p>{{ new.post_excerpt }}</p>
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
 </ion-content>
