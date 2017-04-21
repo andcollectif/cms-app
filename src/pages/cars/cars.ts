@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { CmsCars } from '../../providers/cms-cars';
 import { Car } from '../../models/car';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -11,19 +11,23 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 export class CarsPage {
     cars: Car[]
     offset: number
+    min: number
+    max: number
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public cmsCars: CmsCars, private iab: InAppBrowser) {
-    cmsCars.load(0).subscribe(cars => {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cmsCars: CmsCars, private iab: InAppBrowser, private loadingCtrl: LoadingController) {
+    this.offset = 0;
+    this.min = 0;
+    this.max = 2900;
+    cmsCars.load(this.offset, this.min, this.max).subscribe(cars => {
     this.cars = cars;
     })
-    this.offset = 0;
   }
 
   loadMore(infiniteScroll) {
     console.log('Begin async operation');
 
     this.offset += 8;
-    this.cmsCars.load(this.offset).subscribe(cars => {
+    this.cmsCars.load(this.offset, this.min, this.max).subscribe(cars => {
       setTimeout(() => {
           for (let i of cars) {
             this.cars.push( i );
@@ -31,6 +35,21 @@ export class CarsPage {
 
           console.log('Async operation has ended');
           infiniteScroll.complete();
+      }, 500);
+    })
+  }
+
+  load() {
+    this.offset = 0;
+    let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+    });
+    loading.present();
+
+    this.cmsCars.load(this.offset, this.min, this.max).subscribe(cars => {
+      setTimeout(() => {
+          this.cars = cars;
+          loading.dismiss();
       }, 500);
     })
   }

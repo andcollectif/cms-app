@@ -20,7 +20,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ContactPage,
     CarsPage,
     HomePage,
-    TabsPage
+    TabsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)

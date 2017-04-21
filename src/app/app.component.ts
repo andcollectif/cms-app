@@ -16,7 +16,6 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleBlackOpaque();
       splashScreen.hide();
-      alert('coucou');
     });
   }
 }

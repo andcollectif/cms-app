@@ -15,13 +15,18 @@ export class CmsCars {
 
   constructor(public http: Http) {}
 
-  load(offset): Observable<Car[]> {
-    return this.http.get(`http://api.cmsauto.com/cars?offset=` + offset)
+  load(offset, min, max): Observable<Car[]> {
+    return this.http.get(`http://api.cmsauto.com/cars?offset=` + offset + `&min=` + min + `&max=` + max)
       .map(res => <Car[]>res.json());
   }
 
-  // load(offset): Observable<Car[]> {
+  // load(offset, min, max): Observable<Car[]> {
   //     return this.http.get(`assets/users.json`)
   //       .map(res => <Car[]>res.json());
-  //   }
+  // }
+
+  loadCars(offset, min): Observable<Car[]> {
+      return this.http.get(`assets/cars.json`)
+        .map(res => <Car[]>res.json());
+  }
 }

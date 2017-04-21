@@ -1,13 +1,19 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>cars</ion-title>
   </ion-navbar>
-
+  <ion-range min="0" max="{{ max }}" [(ngModel)]="min" (ionBlur)="load()">
+    <ion-icon range-left>Min</ion-icon>
+    <ion-icon range-right>{{ min }} €</ion-icon>
+  </ion-range>
+  <ion-range min="{{ min }}" max="2900" [(ngModel)]="max" (ionBlur)="load()">
+    <ion-icon range-left>Max</ion-icon>
+    <ion-icon range-right>{{ max }} €</ion-icon>
+  </ion-range>
 </ion-header>
 
 <ion-content class="card-background-page">
-   <ion-list>
+  <ion-list>
     <ion-card class="cards-bg" ion-item *ngFor="let car of cars">
       <img [src]="car.guid" (click)="launch(car.post_name)" />
 
